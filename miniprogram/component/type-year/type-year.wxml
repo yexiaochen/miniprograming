@@ -1,0 +1,28 @@
+<type-year>
+  <view class="target_range">
+    <view class="target_picker">
+      <view class="picker_item picker_from">
+        <picker class="picker_date" mode="date" value="{{fromDate}}" start="1970-01-01" end="2100-09-01" bindchange="bindFromDateChange">
+          <view class="picker_title from_title">从何时开始</view>
+          <view wx:if="{{activeYearType == 'life'}}" class="picker_time">（{{fromDate}}）</view>
+        </picker>
+      </view>
+      <view class="picker_item picker_to">
+        <picker class="picker_date" mode="date" value="{{toDate}}" start="{{fromDate}}" end="2100-09-01" bindchange="bindToDateChange">
+          <view class="picker_title to_title">到何时结束</view>
+          <view wx:if="{{activeYearType == 'life'}}" class="picker_time">（{{toDate}}）</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="year_type">
+    <view class="year_type_item year_type_{{item.type}} {{activeYearType === item.type ? 'selected_year_type': ''}}" wx:for="{{yearType}}" wx:key="{{index}}" data-type="{{item.type}}" bindtap="selectedYearType">
+      <text>{{item.text}}</text>
+    </view>
+  </view>
+  <view class="time_tips">
+    <view class="tips_item total_tip">{{totalTips}}</view>
+    <view class="tips_item exhausted_tip">{{exhaustedTips}}</view>
+    <view class="tips_item leaved_tip">{{leavedTips}}</view>
+  </view>
+</type-year>

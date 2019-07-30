@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "type-year": "../../component/type-year/type-year"
+  }
+}

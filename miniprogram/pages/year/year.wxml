@@ -1,0 +1,24 @@
+<view class="little_target">
+  <view class="target_type">
+    <view 
+      class="target_type_item target_type_{{item.type}}"  
+      wx:for="{{targetType}}" 
+      wx:key="{{index}}" 
+    >
+      <image
+        class="target_type_image {{activedIndex === index ? 'actived_index':''}}"
+        src="{{item.icon}}"
+        data-index="{{index}}" 
+        data-type="{{item.type}}" 
+        bindtap="selectedType"
+      ></image>
+    </view>
+  </view>
+  <view class="target_content">
+    <view wx:if="{{activedIndex === 0}}" class="content_year box">
+      <type-year></type-year>
+    </view>
+    <view wx:if="{{activedIndex === 1}}" class="content_month">month</view>
+    <view wx:if="{{activedIndex === 2}}" class="content_date">day</view>
+  </view>
+</view>

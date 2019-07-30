@@ -1,0 +1,65 @@
+  .target_type_year{}
+  .target_type_month{
+    border-left: 1rpx solid #ccc;
+    border-right: 1rpx solid #ccc;
+  }
+  .target_type_day{}
+  .picker_item{
+    display: flex;
+    justify-content: center;
+    margin: 15rpx 0;
+  }
+  .picker_title{
+    display: inline-block;
+    text-decoration: underline;
+  }
+  .picker_time{
+    display: inline-block;
+  }
+  .picker_date{
+    font-family: "Gill Sans", sans-serif, system-ui;
+  }
+  .content_year{
+    margin: 40rpx;
+    padding: 30rpx;
+    box-shadow: 4px 2px 6px #333333;
+    -webkit-box-shadow:4px 2px 6px #333333; 
+    -moz-box-shadow:3px 2px 6px #333333;
+  }
+  .target_range{}
+  .target_picker{
+    line-height: 1.5;
+  }
+  .picker_from{}
+  .from_title{}
+  .from_date{}
+  .picker_to{}
+  .to_title{}
+  .to_date{}
+  .year_type{
+    text-align: center;
+    font-size: 40rpx;
+    color: rgb(238, 238, 238);
+    line-height: 1.5;
+  }
+  .year_type_year{
+
+  }
+  .year_type_life{}
+  .year_type_item{
+
+  }
+  .selected_year_type{
+    text-shadow: #999 1rpx 1rpx 1rpx;
+    color: #696969;
+  }
+  .time_tips{
+    text-align: center;
+    line-height: 1.5;
+  }
+  .tips_item{
+    
+  }
+  .content_month{}
+  .content_date{}
+  

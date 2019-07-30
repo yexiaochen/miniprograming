@@ -1,0 +1,28 @@
+.soup{
+  height: 100%;
+  position: relative;
+  padding: 0 10rpx;
+}
+.content{
+  color: #696969;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-indent: 40rpx;
+  font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  background: #fffefe;
+  padding: 0 30rpx;
+  line-height: 1.5;
+  font-size: 38rpx;
+}
+.refresh{
+position: absolute;
+right: 70rpx;
+top: 70rpx;
+width: 80rpx;
+height: 80rpx;
+border-radius: 50%;
+border: 1px solid #ccc;
+box-shadow: 0 0 10rpx #ccc;
+}

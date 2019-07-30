@@ -1,0 +1,8 @@
+
+<view class="soup">
+  <image class="refresh" src="../../images/soup.png"></image>
+  <view class="content" bindtap="refresh">{{soup}}</view>
+</view>
+
+
+
