@@ -187,8 +187,8 @@ Component({
         })
       } else {
         this.setData({
-          fromDate: now,
-          toDate: `${2100}-${month+1}-${day}`,
+          fromDate: `${1990}-${month+1}-${day}`,
+          toDate: `${2090}-${month+1}-${day}`,
           activeYearType: type
         })
       }
