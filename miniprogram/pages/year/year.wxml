@@ -18,7 +18,11 @@
     <view wx:if="{{activedIndex === 0}}" class="content_year box" id="content_year">
       <type-year class='type_year_component' chartHeight = "{{yearHeight}}"></type-year>
     </view>
-    <view wx:if="{{activedIndex === 1}}" class="content_month">month</view>
-    <view wx:if="{{activedIndex === 2}}" class="content_date">day</view>
+    <view wx:if="{{activedIndex === 1}}" class="content_month box">
+      <type-month class="type_month_component" chartHeight="{{monthHeight}}"></type-month>
+    </view>
+    <view wx:if="{{activedIndex === 2}}" class="content_date box">
+      <type-date class="type_date_component"></type-date>
+    </view>
   </view>
 </view>

@@ -3,9 +3,9 @@ const date = new Date();
 const year = date.getFullYear();
 const month = date.getMonth();
 const day = date.getDate();
-const now = `${year}-${month+1}-${day}`;
+const now = `${year}-${month + 1}-${day}`;
 const fromDate = `${year}-01-01`;
-const toDate = `${year+1}-01-01`;
+const toDate = `${year + 1}-01-01`;
 
 let chart = null;
 
@@ -28,23 +28,23 @@ function initChart(canvas, width, height, obj) {
       radius: '70%',
       startAngle: 90,
       endAngle: -269,
-      axisLine: { // 坐标轴线
-        lineStyle: { // 属性lineStyle控制线条样式
+      axisLine: {
+        lineStyle: {
           width: 5,
           color: [
-            obj.lineColor ,[1, '#ccc']
+            obj.lineColor, [1, '#ccc']
           ]
         }
       },
-      axisTick: { // 坐标轴小标记
-        length: 15, // 属性length控制线长
-        lineStyle: { // 属性lineStyle控制线条样式
+      axisTick: {
+        length: 15,
+        lineStyle: {
           color: 'auto',
         }
       },
-      splitLine: { // 分隔线
-        length: 20, // 属性length控制线长
-        lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+      splitLine: {
+        length: 20,
+        lineStyle: {
           color: 'auto'
         }
       },
@@ -72,7 +72,7 @@ function initChart(canvas, width, height, obj) {
 
 Component({
   properties: {
-    chartHeight: Number // 简化的定义方式
+    chartHeight: Number
   },
   data: {
     ec: {},
@@ -88,32 +88,29 @@ Component({
     leavedTips: '',
     activeYearType: 'year',
     yearType: [{
-        type: 'year',
-        text: '是一年'
-      },
-      {
-        type: 'life',
-        text: '还是一辈子'
-      }
+      type: 'year',
+      text: '是一年'
+    },
+    {
+      type: 'life',
+      text: '还是一辈子'
+    }
     ]
   },
   lifetimes: {
-    attached: function() {
+    attached: function () {
       this.computeDays();
-    },
-    detached: function() {
-      // 在组件实例被从页面节点树移除时执行
-    },
+    }
   },
   methods: {
-    echartInit(e){
+    echartInit(e) {
       let percent = (this.data.exhaustedDays / this.data.totalDays).toFixed(2) || 0;
       let chartConfig = {
         max: this.data.totalDays,
         value: this.data.exhaustedDays,
-        lineColor: [percent, '#666']
+        lineColor: [percent, '#696969']
       }
-      initChart(e.detail.canvas, e.detail.width, this.data.chartHeight,chartConfig)
+      initChart(e.detail.canvas, e.detail.width, this.data.chartHeight, chartConfig)
     },
     computeDays() {
       let yearOrlife;
@@ -153,21 +150,14 @@ Component({
         leavedTips
       })
       let percent = (exhaustedDays / totalDays).toFixed(2) || 0;
-      if (chart) chart.setOption({series: {max: totalDays, data: [{value: exhaustedDays}], axisLine: {lineStyle: {color: [[percent, '#666'] ,[1, '#ccc']]}}}});
-      // this.spliceBundle('total', totalDays);
-      console.log('reserved', totalTips, exhaustedTips, leavedTips);
+      if (chart) chart.setOption({ series: { max: totalDays, data: [{ value: exhaustedDays }], axisLine: { lineStyle: { color: [[percent, '#696969'], [1, '#ccc']] } } } });
     },
     bindFromDateChange(event) {
-      let query = this.createSelectorQuery();
-      query.select('#the-id').boundingClientRect(function(rect){
-        console.log('rect', rect)
-      }).exec()
       let value = event.detail.value;
       this.setData({
         fromDate: value || fromDate
       })
       this.computeDays();
-      console.log('from', value)
     },
     bindToDateChange(event) {
       let value = event.detail.value;
@@ -175,7 +165,6 @@ Component({
         toDate: value || toDate
       })
       this.computeDays();
-      console.log('to', value)
     },
     selectedYearType(event) {
       let data = event.currentTarget.dataset;
@@ -190,8 +179,8 @@ Component({
         })
       } else {
         this.setData({
-          fromDate: `${1990}-${month+1}-${day}`,
-          toDate: `${2090}-${month+1}-${day}`,
+          fromDate: `${1990}-${month + 1}-${day}`,
+          toDate: `${2090}-${month + 1}-${day}`,
           activeYearType: type
         })
       }
@@ -200,13 +189,11 @@ Component({
     selectedType(event) {
       let data = event.currentTarget.dataset;
       let {
-        index,
-        type
+        index
       } = data;
       this.setData({
         activedIndex: index
       })
-      console.log('index:type', index, type, this.data)
     }
   }
 })

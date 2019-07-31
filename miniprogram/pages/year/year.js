@@ -2,6 +2,7 @@
 Page({
   data: {
     yearHeight: 0,
+    monthHeight: 0,
     // change tab
     activedIndex: 0,
     targetType: [
@@ -16,8 +17,8 @@ Page({
         icon: '../../images/month.png'
       },
       {
-        type: 'day',
-        text: 'day',
+        type: 'date',
+        text: 'date',
         icon: '../../images/date.png'
       }
     ]
@@ -31,7 +32,6 @@ Page({
     console.log('index:type', index, type, this.data)
   },
 
-  //options(Object)
   onLoad: function (options) {
     let height = {};
     let query = wx.createSelectorQuery().in(this);
@@ -40,39 +40,16 @@ Page({
         res.map(item => {
           height[`${item.id}_height`] = item.height;
         })
-        let chartHeight = height.little_target_height - height.target_content_height - height.target_type_height - 20;
+        let yearChartHeight = height.little_target_height - height.target_content_height - height.target_type_height - 20;
+
+        let monthChartHeight = height.little_target_height - height.target_type_height - 50;
+        
         this.setData({
-          yearHeight: chartHeight
+          yearHeight: yearChartHeight,
+          monthHeight: monthChartHeight
         })
       }
     ).exec();
-  },
-  onReady: function () {
-
-  },
-  onShow: function () {
-
-  },
-  onHide: function () {
-
-  },
-  onUnload: function () {
-
-  },
-  onPullDownRefresh: function () {
-
-  },
-  onReachBottom: function () {
-
-  },
-  onShareAppMessage: function () {
-
-  },
-  onPageScroll: function () {
-
-  },
-  //item(index,pagePath,text)
-  onTabItemTap: function (item) {
-
   }
+
 });

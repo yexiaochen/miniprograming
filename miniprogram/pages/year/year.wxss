@@ -5,40 +5,42 @@
   color: #696969;
   margin: 0 10rpx;
   /* overflow: auto; */
-  }
-  .target_type{
-    display: flex;
-    flex-direction: row;
-  }
-  .target_type_item{
-    width: calc(100% / 3);
-    text-align: center;
-    margin: 30rpx 0;
-    font-size: 45rpx;
-    color: #999;
-  }
-  .target_type_year{}
-  .target_type_month{}
-  .actived_index{
-    background: rgba(231, 229, 229, 0.795);
-    border-radius: 10rpx;
-  }
-  .target_type_day{}
-  .target_content{
-    /* height: 100%; */
-    font-size: 40rpx;
-    font-family: "宋体", SimSun,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-  }
-  .content_year{
-    height: 100%;
-  }
-  .target_type_image{
-    width: 80rpx;
-    height: 80rpx;
-  }
-  .type_year_component{
-    display: block;
-    height: 50%;
-  }
-
+}
+.target_type{
+  display: flex;
+  flex-direction: row;
+}
+.target_type_item{
+  width: calc(100% / 3);
+  text-align: center;
+  margin: 30rpx 0;
+  font-size: 45rpx;
+  color: #999;
+}
+.target_type_year{}
+.target_type_month{}
+.actived_index{
+  background: rgba(231, 229, 229, 0.795);
+  border-radius: 10rpx;
+}
+.target_type_day{}
+.target_content{
+  /* height: 100%; */
+  font-size: 40rpx;
+  font-family: "宋体", SimSun,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+.content_year{
+  height: 100%;
+}
+.target_type_image{
+  width: 80rpx;
+  height: 80rpx;
+}
+.type_year_component{
+  /* display: block;
+  height: 50%; */
+}
+.type_month_component{
   
+}
+.type_date_component{}
