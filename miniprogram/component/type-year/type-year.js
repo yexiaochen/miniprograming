@@ -128,6 +128,12 @@ Component({
           activeYearType: 'year'
         })
       }
+      let iOSFromTime = this.data.fromDate.replace(/-/g, '/');
+      let iOSToTime = this.data.toDate.replace(/-/g, '/');
+      let iOSNowTime = now.replace(/-/g, '/');
+      let fromTime = Date.parse(this.data.fromDate) || Date.parse(iOSFromTime);
+      let toTime = Date.parse(this.data.toDate) || Date.parse(iOSToTime);
+      let nowTime = Date.parse(now) || Date.parse(iOSNowTime);
       let fromTime = Date.parse(this.data.fromDate);
       let toTime = Date.parse(this.data.toDate);
       let nowTime = Date.parse(now);
