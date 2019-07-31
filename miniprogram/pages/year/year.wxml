@@ -1,5 +1,5 @@
-<view class="little_target">
-  <view class="target_type">
+<view class="little_target" id="little_target">
+  <view class="target_type" id="target_type">
     <view 
       class="target_type_item target_type_{{item.type}}"  
       wx:for="{{targetType}}" 
@@ -14,9 +14,9 @@
       ></image>
     </view>
   </view>
-  <view class="target_content">
-    <view wx:if="{{activedIndex === 0}}" class="content_year box">
-      <type-year></type-year>
+  <view class="target_content" id="target_content">
+    <view wx:if="{{activedIndex === 0}}" class="content_year box" id="content_year">
+      <type-year class='type_year_component' chartHeight = "{{yearHeight}}"></type-year>
     </view>
     <view wx:if="{{activedIndex === 1}}" class="content_month">month</view>
     <view wx:if="{{activedIndex === 2}}" class="content_date">day</view>

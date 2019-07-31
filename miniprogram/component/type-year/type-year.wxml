@@ -1,5 +1,5 @@
-<type-year>
-  <view class="target_range">
+<block>
+  <view class="target_range" id="target_range">
     <view class="target_picker">
       <view class="picker_item picker_from">
         <picker class="picker_date" mode="date" value="{{fromDate}}" start="1970-01-01" end="2100-09-01" bindchange="bindFromDateChange">
@@ -25,4 +25,7 @@
     <view class="tips_item exhausted_tip">{{exhaustedTips}}</view>
     <view class="tips_item leaved_tip">{{leavedTips}}</view>
   </view>
-</type-year>
+  <view class="chart_wrap" style="height:{{chartHeight}}px">
+    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+  </view>
+</block>

@@ -4,6 +4,7 @@
   height: 100%;
   color: #696969;
   margin: 0 10rpx;
+  /* overflow: auto; */
   }
   .target_type{
     display: flex;
@@ -24,14 +25,20 @@
   }
   .target_type_day{}
   .target_content{
-    margin-top: 65rpx;
+    /* height: 100%; */
     font-size: 40rpx;
     font-family: "宋体", SimSun,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   }
-  .content_year{}
+  .content_year{
+    height: 100%;
+  }
   .target_type_image{
     width: 80rpx;
     height: 80rpx;
+  }
+  .type_year_component{
+    display: block;
+    height: 50%;
   }
 
   

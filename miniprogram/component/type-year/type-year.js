@@ -1,3 +1,4 @@
+import * as echarts from '../ec-canvas/echarts';
 const date = new Date();
 const year = date.getFullYear();
 const month = date.getMonth();
@@ -6,8 +7,75 @@ const now = `${year}-${month+1}-${day}`;
 const fromDate = `${year}-01-01`;
 const toDate = `${year+1}-01-01`;
 
+let chart = null;
+
+function initChart(canvas, width, height, obj) {
+  console.log('this', this);
+  chart = echarts.init(canvas, null, {
+    width: width,
+    height: height
+  });
+  canvas.setChart(chart);
+
+  var option = {
+    series: [{
+      name: '一生',
+      type: 'gauge',
+      z: 3,
+      min: 0,
+      max: obj.max,
+      splitNumber: 5,
+      radius: '70%',
+      startAngle: 90,
+      endAngle: -269,
+      axisLine: { // 坐标轴线
+        lineStyle: { // 属性lineStyle控制线条样式
+          width: 5,
+          color: [
+            obj.lineColor ,[1, '#ccc']
+          ]
+        }
+      },
+      axisTick: { // 坐标轴小标记
+        length: 15, // 属性length控制线长
+        lineStyle: { // 属性lineStyle控制线条样式
+          color: 'auto',
+        }
+      },
+      splitLine: { // 分隔线
+        length: 20, // 属性length控制线长
+        lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+          color: 'auto'
+        }
+      },
+      axisLabel: {
+        show: false
+      },
+      pointer: {
+        width: 5
+      },
+      title: {
+        show: false
+      },
+      detail: {
+        show: false
+      },
+      data: [{
+        value: obj.value
+      }]
+    }]
+  };
+
+  chart.setOption(option);
+  return chart;
+}
+
 Component({
+  properties: {
+    chartHeight: Number // 简化的定义方式
+  },
   data: {
+    ec: {},
     fromDate: fromDate,
     toDate: toDate,
     totalDays: 0,
@@ -19,8 +87,7 @@ Component({
     exhaustedTips: '',
     leavedTips: '',
     activeYearType: 'year',
-    yearType: [
-      {
+    yearType: [{
         type: 'year',
         text: '是一年'
       },
@@ -39,20 +106,18 @@ Component({
     },
   },
   methods: {
-    spliceBundle(dataName, days){
-      let daysArray = Array.from({length: days}).map((item, index) => ({day: index}));
-      let n = 0;
-      while(daysArray.length >=0){
-        let spliceDays = daysArray.splice(0, 10);
-        this.setData({
-          [`${dataName}[${n++}]`]: spliceDays
-        })
+    echartInit(e){
+      let percent = (this.data.exhaustedDays / this.data.totalDays).toFixed(2) || 0;
+      let chartConfig = {
+        max: this.data.totalDays,
+        value: this.data.exhaustedDays,
+        lineColor: [percent, '#666']
       }
-      console.log('this.data.total', this.data, daysArray)
+      initChart(e.detail.canvas, e.detail.width, this.data.chartHeight,chartConfig)
     },
-    computeDays(){
+    computeDays() {
       let yearOrlife;
-      if(this.data.fromDate != fromDate || this.data.toDate != toDate){
+      if (this.data.fromDate != fromDate || this.data.toDate != toDate) {
         yearOrlife = '我这一生';
         this.setData({
           activeYearType: 'life'
@@ -66,18 +131,17 @@ Component({
       let fromTime = Date.parse(this.data.fromDate);
       let toTime = Date.parse(this.data.toDate);
       let nowTime = Date.parse(now);
-      let Conversion = (time) => Math.round((time)/(24*60*60*1000));
-      let totalTime = toTime - fromTime; 
+      let Conversion = (time) => Math.round((time) / (24 * 60 * 60 * 1000));
+      let totalTime = toTime - fromTime;
       let exhaustedTime = nowTime - fromTime;
       let leavedTime = toTime - nowTime;
-      let totalDays = exhaustedTime >= 0? Conversion(totalTime): 0;
-      let exhaustedDays = exhaustedTime >= 0 ?Conversion(exhaustedTime): 0;
-      let leavedDays = leavedTime >= 0 ? Conversion(leavedTime):0;
+      let totalDays = exhaustedTime >= 0 ? Conversion(totalTime) : 0;
+      let exhaustedDays = exhaustedTime >= 0 ? Conversion(exhaustedTime) : 0;
+      let leavedDays = leavedTime >= 0 ? Conversion(leavedTime) : 0;
       let totalTips = exhaustedTime >= 0 ? `${yearOrlife}也就 ${totalDays} 天` : `你怕不是地球人吧`;
       let exhaustedTips = exhaustedTime >= 0 ? `已过去了 ${exhaustedDays} 天` : `你回到未来时，捎上我`;
       let leavedTips = leavedTime >= 0 ? `还剩下 ${leavedDays} 天` : `你回到过去时，捎上我`;
       this.setData({
-        total: Array.from({length: 960}),
         leavedDays,
         exhaustedDays,
         totalDays,
@@ -85,10 +149,16 @@ Component({
         exhaustedTips,
         leavedTips
       })
+      let percent = (exhaustedDays / totalDays).toFixed(2) || 0;
+      if (chart) chart.setOption({series: {max: totalDays, data: [{value: exhaustedDays}], axisLine: {lineStyle: {color: [[percent, '#666'] ,[1, '#ccc']]}}}});
       // this.spliceBundle('total', totalDays);
       console.log('reserved', totalTips, exhaustedTips, leavedTips);
     },
-    bindFromDateChange(event){
+    bindFromDateChange(event) {
+      let query = this.createSelectorQuery();
+      query.select('#the-id').boundingClientRect(function(rect){
+        console.log('rect', rect)
+      }).exec()
       let value = event.detail.value;
       this.setData({
         fromDate: value || fromDate
@@ -96,7 +166,7 @@ Component({
       this.computeDays();
       console.log('from', value)
     },
-    bindToDateChange(event){
+    bindToDateChange(event) {
       let value = event.detail.value;
       this.setData({
         toDate: value || toDate
@@ -104,27 +174,32 @@ Component({
       this.computeDays();
       console.log('to', value)
     },
-    selectedYearType(event){
+    selectedYearType(event) {
       let data = event.currentTarget.dataset;
-      let {type} = data;
-      if(type == 'year'){
+      let {
+        type
+      } = data;
+      if (type == 'year') {
         this.setData({
           fromDate: fromDate,
           toDate: toDate,
           activeYearType: type
         })
-      }else{
+      } else {
         this.setData({
           fromDate: now,
-          toDate: `${year+100}-${month+1}-${day}`,
+          toDate: `${2100}-${month+1}-${day}`,
           activeYearType: type
         })
       }
       this.computeDays();
     },
-    selectedType(event){
+    selectedType(event) {
       let data = event.currentTarget.dataset;
-      let {index, type} = data;
+      let {
+        index,
+        type
+      } = data;
       this.setData({
         activedIndex: index
       })

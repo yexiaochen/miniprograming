@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    soup: "",
+    soup: "今天也要加油啊",
     canClick: true
   },
 
@@ -48,7 +48,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.refresh({message: "今天也要加油啊"});
   },
 
   /**
