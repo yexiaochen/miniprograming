@@ -134,9 +134,6 @@ Component({
       let fromTime = Date.parse(this.data.fromDate) || Date.parse(iOSFromTime);
       let toTime = Date.parse(this.data.toDate) || Date.parse(iOSToTime);
       let nowTime = Date.parse(now) || Date.parse(iOSNowTime);
-      let fromTime = Date.parse(this.data.fromDate);
-      let toTime = Date.parse(this.data.toDate);
-      let nowTime = Date.parse(now);
       let Conversion = (time) => Math.round((time) / (24 * 60 * 60 * 1000));
       let totalTime = toTime - fromTime;
       let exhaustedTime = nowTime - fromTime;
