@@ -42,7 +42,7 @@ Page({
         })
         let yearChartHeight = height.little_target_height - height.target_content_height - height.target_type_height - 20;
 
-        let monthChartHeight = height.little_target_height - height.target_type_height - 50;
+        let monthChartHeight = height.little_target_height - height.target_type_height - 48;
         
         this.setData({
           yearHeight: yearChartHeight,
