@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "type-year": "../../component/type-year/type-year",
+    "type-month": "../../component/type-month/type-month",
     "type-date": "../../component/type-date/type-date"
   }
 }

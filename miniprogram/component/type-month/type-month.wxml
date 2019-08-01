@@ -1,5 +1,5 @@
 <block>
   <view class="chart_wrap" style="height:{{chartHeight}}px">
-    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
   </view>
 </block>
