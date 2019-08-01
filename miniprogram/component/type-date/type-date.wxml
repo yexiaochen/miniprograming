@@ -1,4 +1,20 @@
 <block>
-  <view>date</view>
-  <view></view>
+  <view>
+    <view>are you ok?</view>
+    <button size="mini">ok</button>
+  </view>
+  <view>
+    <view>
+      <view>今日盘点</view>
+      <view>明日计划</view>
+    </view>
+    <view>
+      <view>今日盘点内容</view>
+      <view>
+        <view>这是已完成的 TODO</view>
+        <view>这是未完成完成的 TODO</view>
+        <view>这是底部编辑框</view>
+      </view>
+    </view>
+  </view>
 </block>
