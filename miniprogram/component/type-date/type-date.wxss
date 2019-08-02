@@ -1,0 +1,35 @@
+.target-date-question{
+  font-size: 48rpx;
+  text-align: center;
+  line-height: 1.6;
+}
+.question-title{
+
+}
+.question-button{
+  display: inline;
+  padding: 0rpx 15rpx 6rpx;
+  border-radius: 25%;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+  box-shadow: 0 0 10rpx #ccc;
+  margin-left: 10rpx;
+}
+.target-date-content{
+  padding: 30rpx;
+}
+.target-date-type{
+  text-align: center;
+  padding-bottom: 30rpx;
+}
+.date-type-today{}
+.date-type-tomorrow{}
+.target-date-type-content{}
+.date-type-today-content{}
+.date-type-tomorrow-content{}
+.date-type-tomorrow-none{
+  text-align: center;
+}
+.tomorrow-done{}
+.tomorrow-yet{}
+.tomorrow-edit{}
