@@ -10,7 +10,6 @@ const toDate = `${year + 1}-01-01`;
 let chart = null;
 
 function initChart(canvas, width, height, obj) {
-  console.log('this', this);
   chart = echarts.init(canvas, null, {
     width: width,
     height: height
@@ -110,6 +109,7 @@ Component({
         value: this.data.exhaustedDays,
         lineColor: [percent, '#696969']
       }
+      // Note： 动态注入宽高
       initChart(e.detail.canvas, e.detail.width, this.data.chartHeight, chartConfig)
     },
     computeDays() {
@@ -125,6 +125,7 @@ Component({
           activeYearType: 'year'
         })
       }
+      // Note: iOS parse 处理方式
       let iOSFromTime = this.data.fromDate.replace(/-/g, '/');
       let iOSToTime = this.data.toDate.replace(/-/g, '/');
       let iOSNowTime = now.replace(/-/g, '/');
@@ -148,7 +149,7 @@ Component({
         totalTips,
         exhaustedTips,
         leavedTips
-      })
+      });
       let percent = (exhaustedDays / totalDays).toFixed(2) || 0;
       if (chart) chart.setOption({ series: { max: totalDays, data: [{ value: exhaustedDays }], axisLine: { lineStyle: { color: [[percent, '#696969'], [1, '#ccc']] } } } });
     },
@@ -192,7 +193,7 @@ Component({
         index
       } = data;
       this.setData({
-        activedIndex: index
+        activatedIndex: index
       })
     }
   }

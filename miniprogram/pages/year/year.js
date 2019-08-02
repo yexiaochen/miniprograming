@@ -4,7 +4,7 @@ Page({
     yearHeight: 0,
     monthHeight: 0,
     // change tab
-    activedIndex: 0,
+    activatedIndex: 0,
     targetType: [
       {
         type: 'year',
@@ -25,16 +25,15 @@ Page({
   },
   selectedType(event) {
     let data = event.currentTarget.dataset;
-    let { index, type } = data;
+    let { index } = data;
     this.setData({
-      activedIndex: index
+      activatedIndex: index
     })
-    console.log('index:type', index, type, this.data)
   },
 
-  onLoad: function (options) {
+  onLoad: function () {
     let height = {};
-    let query = wx.createSelectorQuery().in(this);
+    let query = wx.createSelectorQuery().in(this); // Note: 操作节点
     query.selectAll('#little_target, #target_type, #target_content').boundingClientRect(
       res => {
         res.map(item => {

@@ -6,7 +6,7 @@
       wx:key="{{index}}" 
     >
       <image
-        class="target_type_image {{activedIndex === index ? 'actived_index':''}}"
+        class="target_type_image {{activatedIndex === index ? 'actived_index':''}}"
         src="{{item.icon}}"
         data-index="{{index}}" 
         data-type="{{item.type}}" 
@@ -15,13 +15,13 @@
     </view>
   </view>
   <view class="target_content" id="target_content">
-    <view wx:if="{{activedIndex === 0}}" class="content_year box" id="content_year">
+    <view wx:if="{{activatedIndex === 0}}" class="content_year box" id="content_year">
       <type-year class='type_year_component' chartHeight = "{{yearHeight}}"></type-year>
     </view>
-    <view wx:if="{{activedIndex === 1}}" class="content_month box">
+    <view wx:if="{{activatedIndex === 1}}" class="content_month box">
       <type-month class="type_month_component" chartHeight="{{monthHeight}}"></type-month>
     </view>
-    <view wx:if="{{activedIndex === 2}}" class="content_date box">
+    <view wx:if="{{activatedIndex === 2}}" class="content_date box">
       <type-date class="type_date_component"></type-date>
     </view>
   </view>
