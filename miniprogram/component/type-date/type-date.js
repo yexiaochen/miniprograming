@@ -5,25 +5,19 @@ Component({
   data: {
     inputFocus: true,
     modifyType: 0, // 0: add, 1: fix;
-    fixIndex: 0,
     dateType: 0, // 0: today, 1: tomorrow
     TDTodoList: [], // today Todo list
     TMTodoList: [], // tomorrow Todo List
     currentTodo: '',
-    // currentTodoIndex: ''
   },
   methods: {
     bindOk(event) {
-      let { dateType, TDTodoList, modifyType, fixIndex } = this.data;
+      let { dateType, TDTodoList, modifyType } = this.data;
       if (dateType == 1) {
-        this.setData({
-          inputFocus: false
-        })
-        if(modifyType == 1){
-          this.fixTomorrowList();
-        } else {
+          this.setData({
+            inputFocus: false
+          })
           this.addTomorrowList();
-        }
       }
     },
     addTomorrowList() {
@@ -33,7 +27,6 @@ Component({
       });
       this.setData({
         currentTodo: '',
-        // currentTodoIndex: '',
         TMTodoList
       })
     },
@@ -55,23 +48,41 @@ Component({
       console.log('dateType', type);
     },
     bindKeyInput(event) {
-      let { TMTodoList } = this.data;
       let inputValue = event.detail.value;
-      // let currentTodoIndex = inputValue.length == 0 ? '' : (TMTodoList.length + 1)
       this.setData({
         currentTodo: inputValue,
-        // currentTodoIndex: currentTodoIndex
       });
     },
     fixDoneList(event) {
       let data = event.currentTarget.dataset;
       let { TMTodoList } = this.data;
       let { index } = data;
+      let tapTodoContent = TMTodoList[index].todoContent;
+      TMTodoList.splice(index, 1);
       this.setData({
-        currentTodo: TMTodoList[index].todoContent,
-        modifyType: 1,
-        fixIndex: index,
-        inputFocus: true
+        currentTodo: tapTodoContent,
+        inputFocus: true,
+        TMTodoList
+      })
+    },
+    deleteDoneItem(event){
+      let data = event.currentTarget.dataset;
+      let { TMTodoList } = this.data;
+      let {index} = data;
+      let self = this;
+      wx.showModal({
+        title: '删除',
+        content: '放弃小目标？',
+        confirmText: '放弃',
+        cancelText: '坚持',
+        success (res) {
+          if (res.confirm) {
+            TMTodoList.splice(index, 1);
+            self.setData({
+              TMTodoList
+            })
+          }
+        }
       })
     }
   }

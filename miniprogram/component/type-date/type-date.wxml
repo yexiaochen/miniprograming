@@ -21,7 +21,6 @@
           </view>
           <view class="tomorrow-todo-list">
             <view wx:if="{{currentTodo}}" class="tomorrow-yet tomorrow-todo-item">
-              <!-- {{currentTodoIndex}}{{currentTodoIndex == '' ? '': '.'}} -->
               <view class="tomorrow-todo-item-content">
                 {{currentTodo}}
               </view>
@@ -32,8 +31,8 @@
               wx:key="{{index}}"
               data-index="{{index}}"
               bindtap="fixDoneList"
+              bindlongpress="deleteDoneItem"
             >
-              <!-- {{TMTodoList.length - index}}{{'.'}} -->
               <view class="tomorrow-todo-item-content">
                 {{item.todoContent}}
               </view>
