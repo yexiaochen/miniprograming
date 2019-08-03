@@ -98,7 +98,15 @@ Component({
   },
   lifetimes: {
     attached: function () {
-      console.log('attatch,typeyear')
+      wx.getStorage({
+        key: 'key',
+        success: res => {
+          this.setData({
+            fromDate: res.data
+          })
+          console.log(res.data)
+        }
+      })
       this.computeDays();
     }
   },
@@ -156,6 +164,13 @@ Component({
     },
     bindFromDateChange(event) {
       let value = event.detail.value;
+      let { activeYearType } = this.data;
+      if (activeYearType == 'life') {
+        wx.setStorage({
+          key: "birthDay",
+          data: value
+        })
+      }
       this.setData({
         fromDate: value || fromDate
       })
@@ -163,6 +178,13 @@ Component({
     },
     bindToDateChange(event) {
       let value = event.detail.value;
+      let { activeYearType } = this.data;
+      if (activeYearType == 'life') {
+        wx.setStorage({
+          key: "deathDay",
+          data: value
+        })
+      }
       this.setData({
         toDate: value || toDate
       })
@@ -180,9 +202,15 @@ Component({
           activeYearType: type
         })
       } else {
+        try {
+          var birthDay = wx.getStorageSync('birthDay')
+          var deathDay = wx.getStorageSync('deathDay')
+        } catch (e) {
+          console.log('birthDay', e.message);
+        }
         this.setData({
-          fromDate: `${1990}-${month + 1}-${day}`,
-          toDate: `${2090}-${month + 1}-${day}`,
+          fromDate: birthDay || `${1990}-${month + 1}-${day}`,
+          toDate: deathDay || `${2090}-${month + 1}-${day}`,
           activeYearType: type
         })
       }

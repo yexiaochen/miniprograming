@@ -1,28 +1,64 @@
 import * as echarts from '../ec-canvas/echarts';
 let chart = null;
 
-function getVirtulData() {
-  var date = +echarts.number.parseDate('2019-07-01');
-  var end = +echarts.number.parseDate('2019-08-01');
-  var dayTime = 3600 * 24 * 1000;
-  var data = [];
-  for (var time = date; time < end; time += dayTime) {
-    let total = Math.floor(Math.random() * 20);
-    let done = Math.floor(Math.random() * (total + 1));
-    let percent = +(done / total).toFixed(1) || 0;
-    data.push([
-      echarts.format.formatTime('yyyy-MM-dd', time),
-      percent,
-      done,
-      total
-    ]);
+function getTime() {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const fromDate = `${year}-${month}-01`;
+  const toDate = new Date(`${year}`, `${month}`, 1);
+  return {
+    fromDate,
+    toDate,
+    year,
+    month
   }
+}
+
+function getVirtulData() {
+  let { fromDate, toDate } = getTime();
+  let date = +echarts.number.parseDate(fromDate);
+  let end = +echarts.number.parseDate(toDate);
+  let dayTime = 3600 * 24 * 1000;
+  let data = [];
+  for (let time = date; time < end; time += dayTime) {
+    let currentInfo,current = echarts.format.formatTime('yyyy-MM-dd', time);
+    try {
+      currentInfo = wx.getStorageSync(current);
+    } catch (e) {
+      console.log('error', e.message)
+    }
+    if(currentInfo){
+      currentInfo = JSON.parse(currentInfo);
+      let total = currentInfo.length;
+      let done = 0;
+      currentInfo.forEach(item => {
+        if (item.status == 1) {
+          done++;
+        }
+      });
+      let percent = +(done / total).toFixed(1) || 0;
+      data.push([
+        current,
+        percent,
+        done,
+        total
+      ]);
+    } else {
+      data.push([
+        current,
+        0,
+        0,
+        0
+      ])
+    }
+  };
   return data;
 }
 var scatterData = getVirtulData();
 function initChart(canvas, width, height, obj) {
+  let {year, month} = getTime();
   let ceilSize = Math.floor(width / 7);
-  console.log('ceilSize', ceilSize);
   chart = echarts.init(canvas, null, {
     width: width,
     height: height
@@ -78,7 +114,7 @@ function initChart(canvas, width, height, obj) {
         nameMap: 'cn',
         rich: {}
       },
-      range: ['2019-07']
+      range: [`${year}-${month}`]
     },
     series: [{
       type: 'heatmap',

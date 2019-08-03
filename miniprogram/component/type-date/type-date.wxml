@@ -13,29 +13,30 @@
       </view>
     </view>
     <view class="target-date-type-content">
-      <view wx:if="{{dateType == 0}}" class="date-type-today-content">今日盘点内容</view>
+      <view wx:if="{{dateType == 0}}" class="date-type-today-content">
+        <view
+          class="today-todo-list"
+          wx:for="{{TDTodoList}}"
+          wx:key="{{idnex}}"
+          data-status="{{item.status}}"
+          data-index="{{index}}"
+          bindtap="hadDone"
+        >
+            {{item.todoContent}}
+          <view class="today-todo-item-check" hidden="{{!item.status}}">✔</view>
+        </view>
+      </view>
       <view wx:else class="date-type-tomorrow-content">
         <view class="date-type-tomorrow-none">
           <view class="date-type-tomorrow-input">
-            <input class="tomorrow-todo-input" focus="{{inputFocus}}" value="{{currentTodo}}" type="text" placeholder="➡ 定个小目标 ⬅" adjust-position="{{true}}" bindinput="bindKeyInput"/>
+            <input class="tomorrow-todo-input" focus="{{inputFocus}}" value="{{currentTodo}}" type="text" placeholder="➡ 定个小目标 ⬅" adjust-position="{{true}}" bindinput="bindKeyInput" />
           </view>
           <view class="tomorrow-todo-list">
             <view wx:if="{{currentTodo}}" class="tomorrow-yet tomorrow-todo-item">
-              <view class="tomorrow-todo-item-content">
-                {{currentTodo}}
-              </view>
+              <view class="tomorrow-todo-item-content">{{currentTodo}}</view>
             </view>
-            <view 
-              class="tomorrow-done tomorrow-todo-item"
-              wx:for="{{TMTodoList}}"
-              wx:key="{{index}}"
-              data-index="{{index}}"
-              bindtap="fixDoneList"
-              bindlongpress="deleteDoneItem"
-            >
-              <view class="tomorrow-todo-item-content">
-                {{item.todoContent}}
-              </view>
+            <view class="tomorrow-done tomorrow-todo-item" wx:for="{{TMTodoList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="fixDoneList" bindlongpress="deleteDoneItem">
+              <view class="tomorrow-todo-item-content">{{item.todoContent}}</view>
             </view>
           </view>
         </view>
