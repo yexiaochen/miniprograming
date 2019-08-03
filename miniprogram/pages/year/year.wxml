@@ -22,7 +22,7 @@
       <type-month class="type_month_component" chartHeight="{{monthHeight}}"></type-month>
     </view>
     <view wx:if="{{activatedIndex === 2}}" class="content_date box">
-      <type-date class="type_date_component" componentHeight="{{dateHeight}}"></type-date>
+      <type-date class="type_date_component"></type-date>
     </view>
   </view>
 </view>

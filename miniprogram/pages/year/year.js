@@ -3,7 +3,6 @@ Page({
   data: {
     yearHeight: 0,
     monthHeight: 0,
-    dateHeight: 0,
     // change tab
     activatedIndex: 0,
     targetType: [
@@ -48,8 +47,7 @@ Page({
 
         this.setData({
           yearHeight: yearChartHeight,
-          monthHeight: monthChartHeight,
-          dateHeight: componentHeight,
+          monthHeight: monthChartHeight
         })
       }
     ).exec();

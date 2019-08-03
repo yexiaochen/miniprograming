@@ -98,6 +98,7 @@ Component({
   },
   lifetimes: {
     attached: function () {
+      console.log('attatch,typeyear')
       this.computeDays();
     }
   },

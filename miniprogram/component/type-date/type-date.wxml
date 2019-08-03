@@ -1,4 +1,4 @@
-<view style="height:{{componentHeight}}px">
+<view>
   <view class="target-date-question">
     <text class="question-title">are you</text>
     <view class="question-button" bindtap="bindOk">ok</view>

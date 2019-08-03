@@ -1,7 +1,14 @@
+function getTime(){
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
+  const now = `${year}-${month + 1}-${day}`;
+  const fromDate = `${year}-01-01`;
+  const toDate = `${year + 1}-01-01`;
+}
+
 Component({
-  properties: {
-    componentHeight: Number
-  },
   data: {
     inputFocus: true,
     modifyType: 0, // 0: add, 1: fix;
@@ -9,6 +16,14 @@ Component({
     TDTodoList: [], // today Todo list
     TMTodoList: [], // tomorrow Todo List
     currentTodo: '',
+  },
+  lifetimes: {
+    attached: function(){
+      console.log('attached')
+    },
+    detached: function(){
+      console.log('detached')
+    }
   },
   methods: {
     bindOk(event) {
@@ -25,14 +40,6 @@ Component({
       currentTodo && TMTodoList.unshift({
         todoContent: currentTodo
       });
-      this.setData({
-        currentTodo: '',
-        TMTodoList
-      })
-    },
-    fixTomorrowList() { 
-      let {fixIndex, currentTodo, TMTodoList} = this.data;
-      TMTodoList[fixIndex].todoContent = currentTodo;
       this.setData({
         currentTodo: '',
         TMTodoList
