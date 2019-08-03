@@ -4,7 +4,7 @@
   height: 100%;
   color: #696969;
   margin: 0 10rpx;
-  /* overflow: auto; */
+  overflow: auto;
 }
 .target_type{
   display: flex;
@@ -31,6 +31,8 @@
 }
 .content_year{
   height: 100%;
+}
+.content_date{
 }
 .target_type_image{
   width: 80rpx;
