@@ -1,25 +1,44 @@
 <view style="height:{{componentHeight}}px">
   <view class="target-date-question">
     <text class="question-title">are you</text>
-    <view class="question-button">ok</view>
+    <view class="question-button" bindtap="bindOk">ok</view>
   </view>
   <view class="target-date-content">
     <view class="target-date-type">
       <view wx:if="{{dateType == 0}}" class="date-type-today" data-type="0" bindtap="selectType">
-        今日盘点
+        <text class="date-type-item">今日盘点</text>
       </view>
-      <view wx:else class="date-type-tomorrow" data-type="1" bindtap="selectType">明日计划</view>
+      <view wx:else class="date-type-tomorrow" data-type="1" bindtap="selectType">
+        <text class="date-type-item">明日计划</text>
+      </view>
     </view>
     <view class="target-date-type-content">
       <view wx:if="{{dateType == 0}}" class="date-type-today-content">今日盘点内容</view>
       <view wx:else class="date-type-tomorrow-content">
-        <view wx:if="{{TMToDoList.length == 0}}" class="date-type-tomorrow-none">
-          去定个小目标 ⬇
-        </view>
-        <view wx:else>
-          <view class="tomorrow-done">这是已完成的 TODO</view>
-          <view class="tomorrow-yet">这是未完成完成的 TODO</view>
-          <view class="tomorrow-edit">这是底部编辑框</view>
+        <view class="date-type-tomorrow-none">
+          <view class="date-type-tomorrow-input">
+            <input class="tomorrow-todo-input" focus="{{inputFocus}}" value="{{currentTodo}}" type="text" placeholder="➡ 定个小目标 ⬅" adjust-position="{{true}}" bindinput="bindKeyInput"/>
+          </view>
+          <view class="tomorrow-todo-list">
+            <view wx:if="{{currentTodo}}" class="tomorrow-yet tomorrow-todo-item">
+              <!-- {{currentTodoIndex}}{{currentTodoIndex == '' ? '': '.'}} -->
+              <view class="tomorrow-todo-item-content">
+                {{currentTodo}}
+              </view>
+            </view>
+            <view 
+              class="tomorrow-done tomorrow-todo-item"
+              wx:for="{{TMTodoList}}"
+              wx:key="{{index}}"
+              data-index="{{index}}"
+              bindtap="fixDoneList"
+            >
+              <!-- {{TMTodoList.length - index}}{{'.'}} -->
+              <view class="tomorrow-todo-item-content">
+                {{item.todoContent}}
+              </view>
+            </view>
+          </view>
         </view>
       </view>
     </view>

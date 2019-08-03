@@ -30,9 +30,9 @@ page {
 .box{
   margin: 20rpx;
   padding: 30rpx;
-  box-shadow: 1rpx 3rpx 6rpx #ccc;
+  /* box-shadow: 1rpx 3rpx 6rpx #ccc;
   -webkit-box-shadow: 1rpx 3rpx 6rpx #ccc;
-  -moz-box-shadow: 1rpx 3rpx 6rpx #ccc;
+  -moz-box-shadow: 1rpx 3rpx 6rpx #ccc; */
 }
 .box-shadow{
   border: 1px solid #ccc;

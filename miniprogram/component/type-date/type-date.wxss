@@ -1,7 +1,10 @@
 .target-date-question{
   font-size: 48rpx;
-  text-align: center;
   line-height: 1.6;
+  font-family: "Gill Sans", sans-serif, system-ui;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .question-title{
 
@@ -21,15 +24,45 @@
 .target-date-type{
   text-align: center;
   padding-bottom: 30rpx;
+  font-family: "Gill Sans", sans-serif, system-ui;
 }
-.date-type-today{}
+.date-type-today{
+  
+}
 .date-type-tomorrow{}
-.target-date-type-content{}
+.target-date-type-content{}q
 .date-type-today-content{}
 .date-type-tomorrow-content{}
 .date-type-tomorrow-none{
+}
+.date-type-tomorrow-input{
   text-align: center;
 }
-.tomorrow-done{}
+.tomorrow-done{
+
+}
 .tomorrow-yet{}
-.tomorrow-edit{}
+.tomorrow-todo-input{}
+.tomorrow-todo-list{
+  padding: 20rpx 50rpx;
+  /* text-align: left; */
+  font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+.tomorrow-todo-item{
+  word-break: break-all;
+  line-height: 1.5;
+  padding: 10rpx 0;
+}
+.tomorrow-todo-item-content{
+  margin: 0 auto;
+  display: table;
+}
+.date-type-item{
+  background: rgba(231, 229, 229, 0.795);
+  border-radius: 10rpx;
+  padding: 5rpx;
+}
+.box-shadow{
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10rpx #ccc;
+}
