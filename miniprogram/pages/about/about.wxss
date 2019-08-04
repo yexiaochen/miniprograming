@@ -1,0 +1,21 @@
+.about{
+  height: 100%;
+  position: relative;
+  margin: 0 10rpx;
+  background: #fffefe;
+  color: #696969;
+  overflow: auto;
+}
+.about-title{
+  text-align: center;
+}
+.about-content{
+  line-height: 1.6;
+  padding: 30rpx;
+}
+.zone-item{
+
+}
+.function-item{
+  text-indent: 40rpx;
+}

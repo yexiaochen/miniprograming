@@ -1,0 +1,16 @@
+<view class="about">
+  <view class="about-title">关于</view>
+  <view class="about-content">
+    <view class="zone-item">
+      <text>版块一：喝鸡汤</text>
+      <view class="function-item">功能一：触摸该版块区域，可随机生成一条鸡汤文。至于鸡汤有没有毒，一试便知！</view>
+      <view class="function-item">功能二：点击右上角汤碗，可查看该小程序使用说明，就是你所看到的当前页啦！</view>
+    </view>
+    <view class="zone-item">
+      <text>版块一：小目标</text>
+      <view class="function-item">功能一（年）：该功能可分为一年倒计时和一辈子倒计时，可点击有下划线的文字来选择时间范围。</view>
+      <view class="function-item">功能二（月）：该功能是以日历的形式显示每天完成目标的情况，点击每天的日记方格可显示对应的完成的任务/总任务。</view>
+      <view class="function-item">功能二（日）：该功能主要用来盘点今天的任务完成进度，并罗列第二天的计划。点击「今日盘点」/「明日计划」，可进行切换。在「今日盘点」区，确定今日已完成的任务，并点击「ok」，可存储数据。在「明日计划」区，在编辑区编辑任务，点击「ok」，即可生成任务。每条任务在点击后，可以进行编辑修改。长按单个任务，可以选择删除该任务。</view>
+    </view>
+  </view>
+</view>
