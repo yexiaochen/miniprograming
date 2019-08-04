@@ -89,6 +89,7 @@ Component({
         })
         this.addTomorrowList();
       } else {
+        if(!TDTodoList.length) return false;
         wx.setStorageSync(todayStr, JSON.stringify(TDTodoList));
         wx.showToast({
           title: '本地保存成功',

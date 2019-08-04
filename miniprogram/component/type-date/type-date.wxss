@@ -11,12 +11,13 @@
 }
 .question-button{
   display: inline;
-  padding: 0rpx 15rpx 6rpx;
+  padding: 0rpx 15rpx 5rpx;
   border-radius: 25%;
   border: 1px solid #ccc;
   vertical-align: middle;
   box-shadow: 0 0 10rpx #ccc;
   margin-left: 10rpx;
+  line-height: 1.4;
 }
 .target-date-content{
   padding: 30rpx;
