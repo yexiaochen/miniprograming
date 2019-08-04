@@ -14,7 +14,10 @@
     </view>
     <view class="target-date-type-content">
       <view wx:if="{{dateType == 0}}" class="date-type-today-content">
-        <view class="today-todo-list-none" wx:if="{{TDTodoList.length == 0}}">点击「今日盘点」赶紧去定个小目标吧</view>
+        <view class="today-todo-list-none" wx:if="{{TDTodoList.length == 0}}">
+          <view>点击「今日盘点」</view>
+          <view>赶紧去定个小目标吧</view>
+        </view>
         <block wx:else>
           <view class="today-todo-list" wx:for="{{TDTodoList}}" wx:key="{{idnex}}" data-status="{{item.status}}" data-index="{{index}}" bindtap="hadDone">
             {{item.todoContent}}
