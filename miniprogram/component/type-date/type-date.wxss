@@ -80,3 +80,6 @@
   display: inline-block;
   margin-left: 6px;
 }
+.today-todo-list-none{
+  text-align: center;
+}
