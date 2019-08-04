@@ -104,7 +104,6 @@ Component({
           this.setData({
             fromDate: res.data
           })
-          console.log(res.data)
         }
       })
       this.computeDays();

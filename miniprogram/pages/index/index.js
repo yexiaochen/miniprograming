@@ -2,8 +2,6 @@ import Soup from './soup.js';
 
 const soupLength = Soup.soup.length;
 
-
-console.log('soup', Soup);
 Page({
   /**
    * 页面的初始数据
@@ -15,20 +13,7 @@ Page({
 
   navigateTo(event) {
     wx.navigateTo({
-      url: '../about/about',
-      events: {
-        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-        acceptDataFromOpenedPage: function (data) {
-          console.log(data)
-        },
-        someEvent: function (data) {
-          console.log(data)
-        }
-      },
-      success: function (res) {
-        // 通过eventChannel向被打开页面传送数据
-        res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
-      }
+      url: '../about/about'
     })
   },
   refresh: function (obj) {
