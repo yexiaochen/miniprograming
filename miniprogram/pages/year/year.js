@@ -40,7 +40,7 @@ Page({
         res.map(item => {
           height[`${item.id}_height`] = item.height;
         })
-        yearChartHeight = height.little_target_height - height.target_content_height - height.target_type_height - 20;
+        yearChartHeight = height.little_target_height - height.target_content_height - height.target_type_height;
 
         componentHeight = monthChartHeight = height.little_target_height - height.target_type_height - 48;
 

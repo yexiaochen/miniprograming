@@ -5,6 +5,8 @@
   color: #696969;
   margin: 0 10rpx;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 .target_type{
   display: flex;
@@ -30,7 +32,7 @@
   font-family: "宋体", SimSun,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 .content_year{
-  height: 100%;
+  /* height: 100%; */
 }
 .content_date{
 }

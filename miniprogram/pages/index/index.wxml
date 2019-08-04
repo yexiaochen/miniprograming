@@ -1,6 +1,6 @@
 
 <view class="soup">
-  <image class="refresh" src="../../images/soup.png"></image>
+  <image class="refresh" src="../../images/soup.png" catchtap="navigateTo"></image>
   <view class="content" bindtap="drinkSoup">{{soup}}</view>
 </view>
 
