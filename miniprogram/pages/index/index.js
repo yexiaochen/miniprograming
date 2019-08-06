@@ -75,7 +75,7 @@ Page({
         let index = Math.floor(Math.random() * soupLength);
         let soup = Soup.soup[index]["text"];
         resolve(soup);
-      }, 1000)
+      }, 800)
     })
   }
 })
