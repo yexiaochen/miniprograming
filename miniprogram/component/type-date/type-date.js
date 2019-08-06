@@ -8,7 +8,7 @@ function getTime() {
   const todayStr = `${year}-${monthStr}-${dayStr}`;
 
   const tomorrow = new Date(`${year}`, `${monthStr}`, `${day + 1}`);
-  const tomorrowMonth = tomorrow.getMonth() + 1;
+  const tomorrowMonth = tomorrow.getMonth();
   const tomorrowDay = tomorrow.getDate();
   const tomorrowMonthStr = String(tomorrowMonth).length == 1 ? `0${tomorrowMonth}` : tomorrowMonth;
   const tomorrowDayStr = String(tomorrowDay).length == 1 ? `0${tomorrowDay}` : tomorrowDay;
