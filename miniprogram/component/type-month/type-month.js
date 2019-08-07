@@ -1,5 +1,6 @@
 import * as echarts from '../ec-canvas/echarts';
-let chart = null;
+let chart = null, option = null;
+
 
 function getTime() {
   const date = new Date();
@@ -55,8 +56,8 @@ function getVirtulData() {
   };
   return data;
 }
-var scatterData = getVirtulData();
 function initChart(canvas, width, height, obj) {
+  var scatterData = getVirtulData();
   let {year, month} = getTime();
   let ceilSize = Math.floor(width / 7);
   chart = echarts.init(canvas, null, {
@@ -65,7 +66,7 @@ function initChart(canvas, width, height, obj) {
   });
   canvas.setChart(chart);
 
-  var option = {
+  option = {
     tooltip: {
       position: function (pos, params, dom, rect, size) {
         let left = (size.viewSize[0] / 2) - (size.contentSize[0] / 2);
@@ -149,7 +150,15 @@ Component({
   data: {
     ec: { onInit: initChart } // Note: 应采用该初始化方式；
   },
-  lifetimes: {},
+  lifetimes: {
+    attached: function () {
+      if(option){
+        let scatterData = getVirtulData();
+        option.series[0].data = scatterData;
+        chart.setOption(option,true)
+      }
+    }
+  },
   methods: {
   }
 })
